@@ -1,0 +1,118 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "prevURI",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "newURI",
+						"type": "string"
+					}
+				],
+				"name": "ContractURIUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "contractURI",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_uri",
+						"type": "string"
+					}
+				],
+				"name": "setContractURI",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"ContractURIUpdated(string,string)": {
+					"details": "Emitted when the contract URI is updated."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"setContractURI(string)": {
+					"details": "Caller should be authorized to setup contractURI, e.g. contract admin.                  See {_canSetContractURI}.                  Emits {ContractURIUpdated Event}.",
+					"params": {
+						"_uri": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"contractURI()": {
+					"notice": "Returns the contract metadata URI."
+				},
+				"setContractURI(string)": {
+					"notice": "Lets a contract admin set the URI for contract-level metadata."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/ContractMetadata.sol": "ContractMetadata"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/ContractMetadata.sol": {
+			"keccak256": "0xf39f4a9b5205086cce817c972e99cbbe8650b8fb9cc95b62845ea4cde3fa2844",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://274b22cead06dc42a56c1dcf450a70036c9fe59c3326d415c852a5cc3a4cbc8e",
+				"dweb:/ipfs/QmSdA68Qmby5rAdr3JQzCw4EnfzvRLYfDQrgFH6rCTd1Wq"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IContractMetadata.sol": {
+			"keccak256": "0x5952d0586b962b2023a9ab6375496c90067fcced4f7f6283ea6b3026f2f14983",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c53bc124b874d0db67ff2c96cdd8a2a375557446f3a2a026c88a334db2250c34",
+				"dweb:/ipfs/QmR7to5196g8Py4qa4GuFH4DeSLWHgyZzFa17biRosrrpM"
+			]
+		}
+	},
+	"version": 1
+}

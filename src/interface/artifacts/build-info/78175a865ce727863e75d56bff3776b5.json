@@ -1,0 +1,2097 @@
+{
+	"id": "78175a865ce727863e75d56bff3776b5",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.24",
+	"solcLongVersion": "0.8.24+commit.e11b9ed9",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountPermissions.sol": {
+				"content": "// SPDX-License-Identifier: Apache-2.0\r\npragma solidity ^0.8.0;\r\n\r\n/// @author thirdweb\r\n\r\ninterface IAccountPermissions {\r\n    /*///////////////////////////////////////////////////////////////\r\n                                Types\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    /**\r\n     *  @notice The payload that must be signed by an authorized wallet to set permissions for a signer to use the smart wallet.\r\n     *\r\n     *  @param signer The addres of the signer to give permissions.\r\n     *  @param approvedTargets The list of approved targets that a role holder can call using the smart wallet.\r\n     *  @param nativeTokenLimitPerTransaction The maximum value that can be transferred by a role holder in a single transaction.\r\n     *  @param permissionStartTimestamp The UNIX timestamp at and after which a signer has permission to use the smart wallet.\r\n     *  @param permissionEndTimestamp The UNIX timestamp at and after which a signer no longer has permission to use the smart wallet.\r\n     *  @param reqValidityStartTimestamp The UNIX timestamp at and after which a signature is valid.\r\n     *  @param reqValidityEndTimestamp The UNIX timestamp at and after which a signature is invalid/expired.\r\n     *  @param uid A unique non-repeatable ID for the payload.\r\n     *  @param isAdmin Whether the signer should be an admin.\r\n     */\r\n    struct SignerPermissionRequest {\r\n        address signer;\r\n        uint8 isAdmin;\r\n        address[] approvedTargets;\r\n        uint256 nativeTokenLimitPerTransaction;\r\n        uint128 permissionStartTimestamp;\r\n        uint128 permissionEndTimestamp;\r\n        uint128 reqValidityStartTimestamp;\r\n        uint128 reqValidityEndTimestamp;\r\n        bytes32 uid;\r\n    }\r\n\r\n    /**\r\n     *  @notice The permissions that a signer has to use the smart wallet.\r\n     *\r\n     *  @param signer The address of the signer.\r\n     *  @param approvedTargets The list of approved targets that a role holder can call using the smart wallet.\r\n     *  @param nativeTokenLimitPerTransaction The maximum value that can be transferred by a role holder in a single transaction.\r\n     *  @param startTimestamp The UNIX timestamp at and after which a signer has permission to use the smart wallet.\r\n     *  @param endTimestamp The UNIX timestamp at and after which a signer no longer has permission to use the smart wallet.\r\n     */\r\n    struct SignerPermissions {\r\n        address signer;\r\n        address[] approvedTargets;\r\n        uint256 nativeTokenLimitPerTransaction;\r\n        uint128 startTimestamp;\r\n        uint128 endTimestamp;\r\n    }\r\n\r\n    /**\r\n     *  @notice Internal struct for storing permissions for a signer (without approved targets).\r\n     *\r\n     *  @param nativeTokenLimitPerTransaction The maximum value that can be transferred by a role holder in a single transaction.\r\n     *  @param startTimestamp The UNIX timestamp at and after which a signer has permission to use the smart wallet.\r\n     *  @param endTimestamp The UNIX timestamp at and after which a signer no longer has permission to use the smart wallet.\r\n     */\r\n    struct SignerPermissionsStatic {\r\n        uint256 nativeTokenLimitPerTransaction;\r\n        uint128 startTimestamp;\r\n        uint128 endTimestamp;\r\n    }\r\n\r\n    /*///////////////////////////////////////////////////////////////\r\n                                Events\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    /// @notice Emitted when permissions for a signer are updated.\r\n    event SignerPermissionsUpdated(\r\n        address indexed authorizingSigner,\r\n        address indexed targetSigner,\r\n        SignerPermissionRequest permissions\r\n    );\r\n\r\n    /// @notice Emitted when an admin is set or removed.\r\n    event AdminUpdated(address indexed signer, bool isAdmin);\r\n\r\n    /*///////////////////////////////////////////////////////////////\r\n                            View functions\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    /// @notice Returns whether the given account is an admin.\r\n    function isAdmin(address signer) external view returns (bool);\r\n\r\n    /// @notice Returns whether the given account is an active signer on the account.\r\n    function isActiveSigner(address signer) external view returns (bool);\r\n\r\n    /// @notice Returns the restrictions under which a signer can use the smart wallet.\r\n    function getPermissionsForSigner(address signer) external view returns (SignerPermissions memory permissions);\r\n\r\n    /// @notice Returns all active and inactive signers of the account.\r\n    function getAllSigners() external view returns (SignerPermissions[] memory signers);\r\n\r\n    /// @notice Returns all signers with active permissions to use the account.\r\n    function getAllActiveSigners() external view returns (SignerPermissions[] memory signers);\r\n\r\n    /// @notice Returns all admins of the account.\r\n    function getAllAdmins() external view returns (address[] memory admins);\r\n\r\n    /// @dev Verifies that a request is signed by an authorized account.\r\n    function verifySignerPermissionRequest(\r\n        SignerPermissionRequest calldata req,\r\n        bytes calldata signature\r\n    ) external view returns (bool success, address signer);\r\n\r\n    /*///////////////////////////////////////////////////////////////\r\n                            External functions\r\n    //////////////////////////////////////////////////////////////*/\r\n\r\n    /// @notice Sets the permissions for a given signer.\r\n    function setPermissionsForSigner(SignerPermissionRequest calldata req, bytes calldata signature) external;\r\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountPermissions.sol": {
+				"IAccountPermissions": {
+					"abi": [
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "signer",
+									"type": "address"
+								},
+								{
+									"indexed": false,
+									"internalType": "bool",
+									"name": "isAdmin",
+									"type": "bool"
+								}
+							],
+							"name": "AdminUpdated",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "authorizingSigner",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "targetSigner",
+									"type": "address"
+								},
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "signer",
+											"type": "address"
+										},
+										{
+											"internalType": "uint8",
+											"name": "isAdmin",
+											"type": "uint8"
+										},
+										{
+											"internalType": "address[]",
+											"name": "approvedTargets",
+											"type": "address[]"
+										},
+										{
+											"internalType": "uint256",
+											"name": "nativeTokenLimitPerTransaction",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint128",
+											"name": "permissionStartTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "permissionEndTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "reqValidityStartTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "reqValidityEndTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "bytes32",
+											"name": "uid",
+											"type": "bytes32"
+										}
+									],
+									"indexed": false,
+									"internalType": "struct IAccountPermissions.SignerPermissionRequest",
+									"name": "permissions",
+									"type": "tuple"
+								}
+							],
+							"name": "SignerPermissionsUpdated",
+							"type": "event"
+						},
+						{
+							"inputs": [],
+							"name": "getAllActiveSigners",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "signer",
+											"type": "address"
+										},
+										{
+											"internalType": "address[]",
+											"name": "approvedTargets",
+											"type": "address[]"
+										},
+										{
+											"internalType": "uint256",
+											"name": "nativeTokenLimitPerTransaction",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint128",
+											"name": "startTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "endTimestamp",
+											"type": "uint128"
+										}
+									],
+									"internalType": "struct IAccountPermissions.SignerPermissions[]",
+									"name": "signers",
+									"type": "tuple[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getAllAdmins",
+							"outputs": [
+								{
+									"internalType": "address[]",
+									"name": "admins",
+									"type": "address[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getAllSigners",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "signer",
+											"type": "address"
+										},
+										{
+											"internalType": "address[]",
+											"name": "approvedTargets",
+											"type": "address[]"
+										},
+										{
+											"internalType": "uint256",
+											"name": "nativeTokenLimitPerTransaction",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint128",
+											"name": "startTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "endTimestamp",
+											"type": "uint128"
+										}
+									],
+									"internalType": "struct IAccountPermissions.SignerPermissions[]",
+									"name": "signers",
+									"type": "tuple[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "signer",
+									"type": "address"
+								}
+							],
+							"name": "getPermissionsForSigner",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "signer",
+											"type": "address"
+										},
+										{
+											"internalType": "address[]",
+											"name": "approvedTargets",
+											"type": "address[]"
+										},
+										{
+											"internalType": "uint256",
+											"name": "nativeTokenLimitPerTransaction",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint128",
+											"name": "startTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "endTimestamp",
+											"type": "uint128"
+										}
+									],
+									"internalType": "struct IAccountPermissions.SignerPermissions",
+									"name": "permissions",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "signer",
+									"type": "address"
+								}
+							],
+							"name": "isActiveSigner",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "",
+									"type": "bool"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "signer",
+									"type": "address"
+								}
+							],
+							"name": "isAdmin",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "",
+									"type": "bool"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "signer",
+											"type": "address"
+										},
+										{
+											"internalType": "uint8",
+											"name": "isAdmin",
+											"type": "uint8"
+										},
+										{
+											"internalType": "address[]",
+											"name": "approvedTargets",
+											"type": "address[]"
+										},
+										{
+											"internalType": "uint256",
+											"name": "nativeTokenLimitPerTransaction",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint128",
+											"name": "permissionStartTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "permissionEndTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "reqValidityStartTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "reqValidityEndTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "bytes32",
+											"name": "uid",
+											"type": "bytes32"
+										}
+									],
+									"internalType": "struct IAccountPermissions.SignerPermissionRequest",
+									"name": "req",
+									"type": "tuple"
+								},
+								{
+									"internalType": "bytes",
+									"name": "signature",
+									"type": "bytes"
+								}
+							],
+							"name": "setPermissionsForSigner",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "signer",
+											"type": "address"
+										},
+										{
+											"internalType": "uint8",
+											"name": "isAdmin",
+											"type": "uint8"
+										},
+										{
+											"internalType": "address[]",
+											"name": "approvedTargets",
+											"type": "address[]"
+										},
+										{
+											"internalType": "uint256",
+											"name": "nativeTokenLimitPerTransaction",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint128",
+											"name": "permissionStartTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "permissionEndTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "reqValidityStartTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "uint128",
+											"name": "reqValidityEndTimestamp",
+											"type": "uint128"
+										},
+										{
+											"internalType": "bytes32",
+											"name": "uid",
+											"type": "bytes32"
+										}
+									],
+									"internalType": "struct IAccountPermissions.SignerPermissionRequest",
+									"name": "req",
+									"type": "tuple"
+								},
+								{
+									"internalType": "bytes",
+									"name": "signature",
+									"type": "bytes"
+								}
+							],
+							"name": "verifySignerPermissionRequest",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "success",
+									"type": "bool"
+								},
+								{
+									"internalType": "address",
+									"name": "signer",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"author": "thirdweb",
+						"kind": "dev",
+						"methods": {
+							"verifySignerPermissionRequest((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)": {
+								"details": "Verifies that a request is signed by an authorized account."
+							}
+						},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"getAllActiveSigners()": "8b52d723",
+							"getAllAdmins()": "e9523c97",
+							"getAllSigners()": "d42f2f35",
+							"getPermissionsForSigner(address)": "f15d424e",
+							"isActiveSigner(address)": "7dff5a79",
+							"isAdmin(address)": "24d7806c",
+							"setPermissionsForSigner((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)": "5892e236",
+							"verifySignerPermissionRequest((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)": "a9082d84"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.24+commit.e11b9ed9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"isAdmin\",\"type\":\"bool\"}],\"name\":\"AdminUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"authorizingSigner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"targetSigner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"isAdmin\",\"type\":\"uint8\"},{\"internalType\":\"address[]\",\"name\":\"approvedTargets\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"nativeTokenLimitPerTransaction\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"permissionStartTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"permissionEndTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"reqValidityStartTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"reqValidityEndTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"bytes32\",\"name\":\"uid\",\"type\":\"bytes32\"}],\"indexed\":false,\"internalType\":\"struct IAccountPermissions.SignerPermissionRequest\",\"name\":\"permissions\",\"type\":\"tuple\"}],\"name\":\"SignerPermissionsUpdated\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getAllActiveSigners\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"approvedTargets\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"nativeTokenLimitPerTransaction\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"startTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"endTimestamp\",\"type\":\"uint128\"}],\"internalType\":\"struct IAccountPermissions.SignerPermissions[]\",\"name\":\"signers\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllAdmins\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"admins\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllSigners\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"approvedTargets\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"nativeTokenLimitPerTransaction\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"startTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"endTimestamp\",\"type\":\"uint128\"}],\"internalType\":\"struct IAccountPermissions.SignerPermissions[]\",\"name\":\"signers\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"}],\"name\":\"getPermissionsForSigner\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"approvedTargets\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"nativeTokenLimitPerTransaction\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"startTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"endTimestamp\",\"type\":\"uint128\"}],\"internalType\":\"struct IAccountPermissions.SignerPermissions\",\"name\":\"permissions\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"}],\"name\":\"isActiveSigner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"}],\"name\":\"isAdmin\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"isAdmin\",\"type\":\"uint8\"},{\"internalType\":\"address[]\",\"name\":\"approvedTargets\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"nativeTokenLimitPerTransaction\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"permissionStartTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"permissionEndTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"reqValidityStartTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"reqValidityEndTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"bytes32\",\"name\":\"uid\",\"type\":\"bytes32\"}],\"internalType\":\"struct IAccountPermissions.SignerPermissionRequest\",\"name\":\"req\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"setPermissionsForSigner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"isAdmin\",\"type\":\"uint8\"},{\"internalType\":\"address[]\",\"name\":\"approvedTargets\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"nativeTokenLimitPerTransaction\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"permissionStartTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"permissionEndTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"reqValidityStartTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"reqValidityEndTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"bytes32\",\"name\":\"uid\",\"type\":\"bytes32\"}],\"internalType\":\"struct IAccountPermissions.SignerPermissionRequest\",\"name\":\"req\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"verifySignerPermissionRequest\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"thirdweb\",\"kind\":\"dev\",\"methods\":{\"verifySignerPermissionRequest((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)\":{\"details\":\"Verifies that a request is signed by an authorized account.\"}},\"version\":1},\"userdoc\":{\"events\":{\"AdminUpdated(address,bool)\":{\"notice\":\"Emitted when an admin is set or removed.\"},\"SignerPermissionsUpdated(address,address,(address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32))\":{\"notice\":\"Emitted when permissions for a signer are updated.\"}},\"kind\":\"user\",\"methods\":{\"getAllActiveSigners()\":{\"notice\":\"Returns all signers with active permissions to use the account.\"},\"getAllAdmins()\":{\"notice\":\"Returns all admins of the account.\"},\"getAllSigners()\":{\"notice\":\"Returns all active and inactive signers of the account.\"},\"getPermissionsForSigner(address)\":{\"notice\":\"Returns the restrictions under which a signer can use the smart wallet.\"},\"isActiveSigner(address)\":{\"notice\":\"Returns whether the given account is an active signer on the account.\"},\"isAdmin(address)\":{\"notice\":\"Returns whether the given account is an admin.\"},\"setPermissionsForSigner((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)\":{\"notice\":\"Sets the permissions for a given signer.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountPermissions.sol\":\"IAccountPermissions\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountPermissions.sol\":{\"keccak256\":\"0x34e998c2cfac71ae5837280e487215fc64f17c4212270192442e541527a38871\",\"license\":\"Apache-2.0\",\"urls\":[\"bzz-raw://51d201d243ade4b6aa37f88e6dbd8f4886ef2b15a290630367b8b95f8ef1a69c\",\"dweb:/ipfs/QmfHdzvzEugZMatjex3sbp2ehjcRE3mDi7QxEHCi6A25Ww\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"events": {
+							"AdminUpdated(address,bool)": {
+								"notice": "Emitted when an admin is set or removed."
+							},
+							"SignerPermissionsUpdated(address,address,(address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32))": {
+								"notice": "Emitted when permissions for a signer are updated."
+							}
+						},
+						"kind": "user",
+						"methods": {
+							"getAllActiveSigners()": {
+								"notice": "Returns all signers with active permissions to use the account."
+							},
+							"getAllAdmins()": {
+								"notice": "Returns all admins of the account."
+							},
+							"getAllSigners()": {
+								"notice": "Returns all active and inactive signers of the account."
+							},
+							"getPermissionsForSigner(address)": {
+								"notice": "Returns the restrictions under which a signer can use the smart wallet."
+							},
+							"isActiveSigner(address)": {
+								"notice": "Returns whether the given account is an active signer on the account."
+							},
+							"isAdmin(address)": {
+								"notice": "Returns whether the given account is an admin."
+							},
+							"setPermissionsForSigner((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)": {
+								"notice": "Sets the permissions for a given signer."
+							}
+						},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountPermissions.sol": {
+				"ast": {
+					"absolutePath": ".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountPermissions.sol",
+					"exportedSymbols": {
+						"IAccountPermissions": [
+							132
+						]
+					},
+					"id": 133,
+					"license": "Apache-2.0",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "40:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "IAccountPermissions",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "67:22:0",
+								"text": "@author thirdweb"
+							},
+							"fullyImplemented": false,
+							"id": 132,
+							"linearizedBaseContracts": [
+								132
+							],
+							"name": "IAccountPermissions",
+							"nameLocation": "101:19:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"canonicalName": "IAccountPermissions.SignerPermissionRequest",
+									"documentation": {
+										"id": 3,
+										"nodeType": "StructuredDocumentation",
+										"src": "310:1066:0",
+										"text": "  @notice The payload that must be signed by an authorized wallet to set permissions for a signer to use the smart wallet.\n  @param signer The addres of the signer to give permissions.\n  @param approvedTargets The list of approved targets that a role holder can call using the smart wallet.\n  @param nativeTokenLimitPerTransaction The maximum value that can be transferred by a role holder in a single transaction.\n  @param permissionStartTimestamp The UNIX timestamp at and after which a signer has permission to use the smart wallet.\n  @param permissionEndTimestamp The UNIX timestamp at and after which a signer no longer has permission to use the smart wallet.\n  @param reqValidityStartTimestamp The UNIX timestamp at and after which a signature is valid.\n  @param reqValidityEndTimestamp The UNIX timestamp at and after which a signature is invalid/expired.\n  @param uid A unique non-repeatable ID for the payload.\n  @param isAdmin Whether the signer should be an admin."
+									},
+									"id": 23,
+									"members": [
+										{
+											"constant": false,
+											"id": 5,
+											"mutability": "mutable",
+											"name": "signer",
+											"nameLocation": "1432:6:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1424:14:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 4,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "1424:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 7,
+											"mutability": "mutable",
+											"name": "isAdmin",
+											"nameLocation": "1455:7:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1449:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint8",
+												"typeString": "uint8"
+											},
+											"typeName": {
+												"id": 6,
+												"name": "uint8",
+												"nodeType": "ElementaryTypeName",
+												"src": "1449:5:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint8",
+													"typeString": "uint8"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 10,
+											"mutability": "mutable",
+											"name": "approvedTargets",
+											"nameLocation": "1483:15:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1473:25:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+												"typeString": "address[]"
+											},
+											"typeName": {
+												"baseType": {
+													"id": 8,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1473:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"id": 9,
+												"nodeType": "ArrayTypeName",
+												"src": "1473:9:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+													"typeString": "address[]"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 12,
+											"mutability": "mutable",
+											"name": "nativeTokenLimitPerTransaction",
+											"nameLocation": "1517:30:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1509:38:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 11,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "1509:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 14,
+											"mutability": "mutable",
+											"name": "permissionStartTimestamp",
+											"nameLocation": "1566:24:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1558:32:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 13,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "1558:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 16,
+											"mutability": "mutable",
+											"name": "permissionEndTimestamp",
+											"nameLocation": "1609:22:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1601:30:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 15,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "1601:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 18,
+											"mutability": "mutable",
+											"name": "reqValidityStartTimestamp",
+											"nameLocation": "1650:25:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1642:33:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 17,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "1642:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 20,
+											"mutability": "mutable",
+											"name": "reqValidityEndTimestamp",
+											"nameLocation": "1694:23:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1686:31:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 19,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "1686:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 22,
+											"mutability": "mutable",
+											"name": "uid",
+											"nameLocation": "1736:3:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 23,
+											"src": "1728:11:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bytes32",
+												"typeString": "bytes32"
+											},
+											"typeName": {
+												"id": 21,
+												"name": "bytes32",
+												"nodeType": "ElementaryTypeName",
+												"src": "1728:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes32",
+													"typeString": "bytes32"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "SignerPermissionRequest",
+									"nameLocation": "1389:23:0",
+									"nodeType": "StructDefinition",
+									"scope": 132,
+									"src": "1382:365:0",
+									"visibility": "public"
+								},
+								{
+									"canonicalName": "IAccountPermissions.SignerPermissions",
+									"documentation": {
+										"id": 24,
+										"nodeType": "StructuredDocumentation",
+										"src": "1755:634:0",
+										"text": "  @notice The permissions that a signer has to use the smart wallet.\n  @param signer The address of the signer.\n  @param approvedTargets The list of approved targets that a role holder can call using the smart wallet.\n  @param nativeTokenLimitPerTransaction The maximum value that can be transferred by a role holder in a single transaction.\n  @param startTimestamp The UNIX timestamp at and after which a signer has permission to use the smart wallet.\n  @param endTimestamp The UNIX timestamp at and after which a signer no longer has permission to use the smart wallet."
+									},
+									"id": 36,
+									"members": [
+										{
+											"constant": false,
+											"id": 26,
+											"mutability": "mutable",
+											"name": "signer",
+											"nameLocation": "2439:6:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 36,
+											"src": "2431:14:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 25,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "2431:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 29,
+											"mutability": "mutable",
+											"name": "approvedTargets",
+											"nameLocation": "2466:15:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 36,
+											"src": "2456:25:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+												"typeString": "address[]"
+											},
+											"typeName": {
+												"baseType": {
+													"id": 27,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "2456:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"id": 28,
+												"nodeType": "ArrayTypeName",
+												"src": "2456:9:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+													"typeString": "address[]"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 31,
+											"mutability": "mutable",
+											"name": "nativeTokenLimitPerTransaction",
+											"nameLocation": "2500:30:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 36,
+											"src": "2492:38:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 30,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "2492:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 33,
+											"mutability": "mutable",
+											"name": "startTimestamp",
+											"nameLocation": "2549:14:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 36,
+											"src": "2541:22:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 32,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "2541:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 35,
+											"mutability": "mutable",
+											"name": "endTimestamp",
+											"nameLocation": "2582:12:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 36,
+											"src": "2574:20:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 34,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "2574:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "SignerPermissions",
+									"nameLocation": "2402:17:0",
+									"nodeType": "StructDefinition",
+									"scope": 132,
+									"src": "2395:207:0",
+									"visibility": "public"
+								},
+								{
+									"canonicalName": "IAccountPermissions.SignerPermissionsStatic",
+									"documentation": {
+										"id": 37,
+										"nodeType": "StructuredDocumentation",
+										"src": "2610:493:0",
+										"text": "  @notice Internal struct for storing permissions for a signer (without approved targets).\n  @param nativeTokenLimitPerTransaction The maximum value that can be transferred by a role holder in a single transaction.\n  @param startTimestamp The UNIX timestamp at and after which a signer has permission to use the smart wallet.\n  @param endTimestamp The UNIX timestamp at and after which a signer no longer has permission to use the smart wallet."
+									},
+									"id": 44,
+									"members": [
+										{
+											"constant": false,
+											"id": 39,
+											"mutability": "mutable",
+											"name": "nativeTokenLimitPerTransaction",
+											"nameLocation": "3159:30:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 44,
+											"src": "3151:38:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 38,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "3151:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 41,
+											"mutability": "mutable",
+											"name": "startTimestamp",
+											"nameLocation": "3208:14:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 44,
+											"src": "3200:22:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 40,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "3200:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 43,
+											"mutability": "mutable",
+											"name": "endTimestamp",
+											"nameLocation": "3241:12:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 44,
+											"src": "3233:20:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 42,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "3233:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "SignerPermissionsStatic",
+									"nameLocation": "3116:23:0",
+									"nodeType": "StructDefinition",
+									"scope": 132,
+									"src": "3109:152:0",
+									"visibility": "public"
+								},
+								{
+									"anonymous": false,
+									"documentation": {
+										"id": 45,
+										"nodeType": "StructuredDocumentation",
+										"src": "3452:62:0",
+										"text": "@notice Emitted when permissions for a signer are updated."
+									},
+									"eventSelector": "f21d10c26e35863a8df291aca54181ee8c4a3bc8e00246c3f7a5a14b69d826a7",
+									"id": 54,
+									"name": "SignerPermissionsUpdated",
+									"nameLocation": "3526:24:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 53,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 47,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "authorizingSigner",
+												"nameLocation": "3577:17:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 54,
+												"src": "3561:33:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 46,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "3561:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 49,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "targetSigner",
+												"nameLocation": "3621:12:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 54,
+												"src": "3605:28:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 48,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "3605:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 52,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "permissions",
+												"nameLocation": "3668:11:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 54,
+												"src": "3644:35:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_SignerPermissionRequest_$23_memory_ptr",
+													"typeString": "struct IAccountPermissions.SignerPermissionRequest"
+												},
+												"typeName": {
+													"id": 51,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 50,
+														"name": "SignerPermissionRequest",
+														"nameLocations": [
+															"3644:23:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 23,
+														"src": "3644:23:0"
+													},
+													"referencedDeclaration": 23,
+													"src": "3644:23:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_SignerPermissionRequest_$23_storage_ptr",
+														"typeString": "struct IAccountPermissions.SignerPermissionRequest"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3550:136:0"
+									},
+									"src": "3520:167:0"
+								},
+								{
+									"anonymous": false,
+									"documentation": {
+										"id": 55,
+										"nodeType": "StructuredDocumentation",
+										"src": "3695:52:0",
+										"text": "@notice Emitted when an admin is set or removed."
+									},
+									"eventSelector": "235bc17e7930760029e9f4d860a2a8089976de5b381cf8380fc11c1d88a11133",
+									"id": 61,
+									"name": "AdminUpdated",
+									"nameLocation": "3759:12:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 60,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 57,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "signer",
+												"nameLocation": "3788:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 61,
+												"src": "3772:22:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 56,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "3772:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 59,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "isAdmin",
+												"nameLocation": "3801:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 61,
+												"src": "3796:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 58,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "3796:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3771:38:0"
+									},
+									"src": "3753:57:0"
+								},
+								{
+									"documentation": {
+										"id": 62,
+										"nodeType": "StructuredDocumentation",
+										"src": "4005:58:0",
+										"text": "@notice Returns whether the given account is an admin."
+									},
+									"functionSelector": "24d7806c",
+									"id": 69,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "isAdmin",
+									"nameLocation": "4078:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 65,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 64,
+												"mutability": "mutable",
+												"name": "signer",
+												"nameLocation": "4094:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 69,
+												"src": "4086:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 63,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "4086:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4085:16:0"
+									},
+									"returnParameters": {
+										"id": 68,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 67,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 69,
+												"src": "4125:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 66,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "4125:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4124:6:0"
+									},
+									"scope": 132,
+									"src": "4069:62:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 70,
+										"nodeType": "StructuredDocumentation",
+										"src": "4139:81:0",
+										"text": "@notice Returns whether the given account is an active signer on the account."
+									},
+									"functionSelector": "7dff5a79",
+									"id": 77,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "isActiveSigner",
+									"nameLocation": "4235:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 73,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 72,
+												"mutability": "mutable",
+												"name": "signer",
+												"nameLocation": "4258:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 77,
+												"src": "4250:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 71,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "4250:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4249:16:0"
+									},
+									"returnParameters": {
+										"id": 76,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 75,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 77,
+												"src": "4289:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 74,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "4289:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4288:6:0"
+									},
+									"scope": 132,
+									"src": "4226:69:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 78,
+										"nodeType": "StructuredDocumentation",
+										"src": "4303:83:0",
+										"text": "@notice Returns the restrictions under which a signer can use the smart wallet."
+									},
+									"functionSelector": "f15d424e",
+									"id": 86,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getPermissionsForSigner",
+									"nameLocation": "4401:23:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 81,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 80,
+												"mutability": "mutable",
+												"name": "signer",
+												"nameLocation": "4433:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 86,
+												"src": "4425:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 79,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "4425:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4424:16:0"
+									},
+									"returnParameters": {
+										"id": 85,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 84,
+												"mutability": "mutable",
+												"name": "permissions",
+												"nameLocation": "4489:11:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 86,
+												"src": "4464:36:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_SignerPermissions_$36_memory_ptr",
+													"typeString": "struct IAccountPermissions.SignerPermissions"
+												},
+												"typeName": {
+													"id": 83,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 82,
+														"name": "SignerPermissions",
+														"nameLocations": [
+															"4464:17:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 36,
+														"src": "4464:17:0"
+													},
+													"referencedDeclaration": 36,
+													"src": "4464:17:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_SignerPermissions_$36_storage_ptr",
+														"typeString": "struct IAccountPermissions.SignerPermissions"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4463:38:0"
+									},
+									"scope": 132,
+									"src": "4392:110:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 87,
+										"nodeType": "StructuredDocumentation",
+										"src": "4510:67:0",
+										"text": "@notice Returns all active and inactive signers of the account."
+									},
+									"functionSelector": "d42f2f35",
+									"id": 94,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getAllSigners",
+									"nameLocation": "4592:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 88,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4605:2:0"
+									},
+									"returnParameters": {
+										"id": 93,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 92,
+												"mutability": "mutable",
+												"name": "signers",
+												"nameLocation": "4658:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 94,
+												"src": "4631:34:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_struct$_SignerPermissions_$36_memory_ptr_$dyn_memory_ptr",
+													"typeString": "struct IAccountPermissions.SignerPermissions[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 90,
+														"nodeType": "UserDefinedTypeName",
+														"pathNode": {
+															"id": 89,
+															"name": "SignerPermissions",
+															"nameLocations": [
+																"4631:17:0"
+															],
+															"nodeType": "IdentifierPath",
+															"referencedDeclaration": 36,
+															"src": "4631:17:0"
+														},
+														"referencedDeclaration": 36,
+														"src": "4631:17:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_SignerPermissions_$36_storage_ptr",
+															"typeString": "struct IAccountPermissions.SignerPermissions"
+														}
+													},
+													"id": 91,
+													"nodeType": "ArrayTypeName",
+													"src": "4631:19:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_struct$_SignerPermissions_$36_storage_$dyn_storage_ptr",
+														"typeString": "struct IAccountPermissions.SignerPermissions[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4630:36:0"
+									},
+									"scope": 132,
+									"src": "4583:84:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 95,
+										"nodeType": "StructuredDocumentation",
+										"src": "4675:75:0",
+										"text": "@notice Returns all signers with active permissions to use the account."
+									},
+									"functionSelector": "8b52d723",
+									"id": 102,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getAllActiveSigners",
+									"nameLocation": "4765:19:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 96,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4784:2:0"
+									},
+									"returnParameters": {
+										"id": 101,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 100,
+												"mutability": "mutable",
+												"name": "signers",
+												"nameLocation": "4837:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 102,
+												"src": "4810:34:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_struct$_SignerPermissions_$36_memory_ptr_$dyn_memory_ptr",
+													"typeString": "struct IAccountPermissions.SignerPermissions[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 98,
+														"nodeType": "UserDefinedTypeName",
+														"pathNode": {
+															"id": 97,
+															"name": "SignerPermissions",
+															"nameLocations": [
+																"4810:17:0"
+															],
+															"nodeType": "IdentifierPath",
+															"referencedDeclaration": 36,
+															"src": "4810:17:0"
+														},
+														"referencedDeclaration": 36,
+														"src": "4810:17:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_SignerPermissions_$36_storage_ptr",
+															"typeString": "struct IAccountPermissions.SignerPermissions"
+														}
+													},
+													"id": 99,
+													"nodeType": "ArrayTypeName",
+													"src": "4810:19:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_struct$_SignerPermissions_$36_storage_$dyn_storage_ptr",
+														"typeString": "struct IAccountPermissions.SignerPermissions[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4809:36:0"
+									},
+									"scope": 132,
+									"src": "4756:90:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 103,
+										"nodeType": "StructuredDocumentation",
+										"src": "4854:46:0",
+										"text": "@notice Returns all admins of the account."
+									},
+									"functionSelector": "e9523c97",
+									"id": 109,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getAllAdmins",
+									"nameLocation": "4915:12:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 104,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4927:2:0"
+									},
+									"returnParameters": {
+										"id": 108,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 107,
+												"mutability": "mutable",
+												"name": "admins",
+												"nameLocation": "4970:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 109,
+												"src": "4953:23:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 105,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "4953:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 106,
+													"nodeType": "ArrayTypeName",
+													"src": "4953:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4952:25:0"
+									},
+									"scope": 132,
+									"src": "4906:72:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 110,
+										"nodeType": "StructuredDocumentation",
+										"src": "4986:68:0",
+										"text": "@dev Verifies that a request is signed by an authorized account."
+									},
+									"functionSelector": "a9082d84",
+									"id": 122,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "verifySignerPermissionRequest",
+									"nameLocation": "5069:29:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 116,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 113,
+												"mutability": "mutable",
+												"name": "req",
+												"nameLocation": "5142:3:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 122,
+												"src": "5109:36:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_SignerPermissionRequest_$23_calldata_ptr",
+													"typeString": "struct IAccountPermissions.SignerPermissionRequest"
+												},
+												"typeName": {
+													"id": 112,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 111,
+														"name": "SignerPermissionRequest",
+														"nameLocations": [
+															"5109:23:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 23,
+														"src": "5109:23:0"
+													},
+													"referencedDeclaration": 23,
+													"src": "5109:23:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_SignerPermissionRequest_$23_storage_ptr",
+														"typeString": "struct IAccountPermissions.SignerPermissionRequest"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 115,
+												"mutability": "mutable",
+												"name": "signature",
+												"nameLocation": "5171:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 122,
+												"src": "5156:24:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes_calldata_ptr",
+													"typeString": "bytes"
+												},
+												"typeName": {
+													"id": 114,
+													"name": "bytes",
+													"nodeType": "ElementaryTypeName",
+													"src": "5156:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes_storage_ptr",
+														"typeString": "bytes"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "5098:89:0"
+									},
+									"returnParameters": {
+										"id": 121,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 118,
+												"mutability": "mutable",
+												"name": "success",
+												"nameLocation": "5216:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 122,
+												"src": "5211:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 117,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "5211:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 120,
+												"mutability": "mutable",
+												"name": "signer",
+												"nameLocation": "5233:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 122,
+												"src": "5225:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 119,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "5225:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "5210:30:0"
+									},
+									"scope": 132,
+									"src": "5060:181:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 123,
+										"nodeType": "StructuredDocumentation",
+										"src": "5440:52:0",
+										"text": "@notice Sets the permissions for a given signer."
+									},
+									"functionSelector": "5892e236",
+									"id": 131,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setPermissionsForSigner",
+									"nameLocation": "5507:23:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 129,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 126,
+												"mutability": "mutable",
+												"name": "req",
+												"nameLocation": "5564:3:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 131,
+												"src": "5531:36:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_SignerPermissionRequest_$23_calldata_ptr",
+													"typeString": "struct IAccountPermissions.SignerPermissionRequest"
+												},
+												"typeName": {
+													"id": 125,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 124,
+														"name": "SignerPermissionRequest",
+														"nameLocations": [
+															"5531:23:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 23,
+														"src": "5531:23:0"
+													},
+													"referencedDeclaration": 23,
+													"src": "5531:23:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_SignerPermissionRequest_$23_storage_ptr",
+														"typeString": "struct IAccountPermissions.SignerPermissionRequest"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 128,
+												"mutability": "mutable",
+												"name": "signature",
+												"nameLocation": "5584:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 131,
+												"src": "5569:24:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes_calldata_ptr",
+													"typeString": "bytes"
+												},
+												"typeName": {
+													"id": 127,
+													"name": "bytes",
+													"nodeType": "ElementaryTypeName",
+													"src": "5569:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes_storage_ptr",
+														"typeString": "bytes"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "5530:64:0"
+									},
+									"returnParameters": {
+										"id": 130,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "5603:0:0"
+									},
+									"scope": 132,
+									"src": "5498:106:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 133,
+							"src": "91:5516:0",
+							"usedErrors": [],
+							"usedEvents": [
+								54,
+								61
+							]
+						}
+					],
+					"src": "40:5567:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

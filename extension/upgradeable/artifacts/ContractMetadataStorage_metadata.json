@@ -1,0 +1,76 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "CONTRACT_METADATA_STORAGE_POSITION",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "thirdweb.com",
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"CONTRACT_METADATA_STORAGE_POSITION": {
+					"custom:storage-location": "erc7201:contract.metadata.storage",
+					"details": "keccak256(abi.encode(uint256(keccak256(\"contract.metadata.storage\")) - 1)) & ~bytes32(uint256(0xff))"
+				}
+			},
+			"title": "Contract Metadata",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Thirdweb's `ContractMetadata` is a contract extension for any base contracts. It lets you set a metadata URI           for you contract.           Additionally, `ContractMetadata` is necessary for NFT contracts that want royalties to get distributed on OpenSea.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/ContractMetadata.sol": "ContractMetadataStorage"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/ContractMetadata.sol": {
+			"keccak256": "0xf39f4a9b5205086cce817c972e99cbbe8650b8fb9cc95b62845ea4cde3fa2844",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://274b22cead06dc42a56c1dcf450a70036c9fe59c3326d415c852a5cc3a4cbc8e",
+				"dweb:/ipfs/QmSdA68Qmby5rAdr3JQzCw4EnfzvRLYfDQrgFH6rCTd1Wq"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IContractMetadata.sol": {
+			"keccak256": "0x5952d0586b962b2023a9ab6375496c90067fcced4f7f6283ea6b3026f2f14983",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c53bc124b874d0db67ff2c96cdd8a2a375557446f3a2a026c88a334db2250c34",
+				"dweb:/ipfs/QmR7to5196g8Py4qa4GuFH4DeSLWHgyZzFa17biRosrrpM"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Elliptic Curve Digital Signature Algorithm (ECDSA) operations. These functions can be used to verify that a message was signed by the holder of the private keys of a given address.",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/ECDSA.sol": "ECDSA"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Strings.sol": {
+			"keccak256": "0x20e6bbbb0ac64ba9358b7d03773ba533d9474afb93285e412c80ba951fc16e52",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c6706f7cd9a2c723cb7df32e4dfbfc08f96812dfda2d96d0d922385da6fed190",
+				"dweb:/ipfs/QmVEfuuyWFTQQsZ4Xk4hmVwojKPjVk8pgX5hUmvUi4prQg"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/ECDSA.sol": {
+			"keccak256": "0xd3ff430c58be2936bf9cd4619ae0db100832fb08a75d20f18bc5abce89140421",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://de4755385866c68e43000ee6d068b6214137d4aa42fe4534a408d72e37520da1",
+				"dweb:/ipfs/QmZHJKhUX6m7fNEqUvLUSXtKEaH1CdvN7QZaeKtsi7kiuB"
+			]
+		}
+	},
+	"version": 1
+}

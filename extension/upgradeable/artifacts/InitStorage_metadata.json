@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"INIT_STORAGE_POSITION": {
+					"custom:storage-location": "erc7201:init.storage",
+					"details": "keccak256(abi.encode(uint256(keccak256(\"init.storage\")) - 1)) & ~bytes32(uint256(0xff))"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Initializable.sol": "InitStorage"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Initializable.sol": {
+			"keccak256": "0x745d7351e20def4842a749197e65bea93a7d9d7b9556d2c516e52a698b53170d",
+			"license": "Apache 2.0",
+			"urls": [
+				"bzz-raw://df7e96985f30495f70b5d98c934bb52a2a7123bc8e24003ef110d26eca56dfe2",
+				"dweb:/ipfs/QmUpXp5e1w3BgYTpGY9W6akoDyfrxB7TeDsbPpRmXse4KQ"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Address.sol": {
+			"keccak256": "0x3793ed8492fa575cf73beed883a26cda685bb53f63950599c1280eae9a73fada",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://f9e2916d53829baff87699664e65b95ff536c25d02d4b9ff2433eab54812f9b0",
+				"dweb:/ipfs/QmXSqLvmNZ3qLLC42TCDzNEia2mUmALdTTfLxKmfdqNEot"
+			]
+		}
+	},
+	"version": 1
+}

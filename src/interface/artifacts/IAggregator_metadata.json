@@ -1,0 +1,317 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "sender",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nonce",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "initCode",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "callData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint256",
+								"name": "callGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "verificationGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "preVerificationGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxPriorityFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "paymasterAndData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "signature",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct UserOperation[]",
+						"name": "userOps",
+						"type": "tuple[]"
+					}
+				],
+				"name": "aggregateSignatures",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "aggregatedSignature",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "sender",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nonce",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "initCode",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "callData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint256",
+								"name": "callGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "verificationGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "preVerificationGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxPriorityFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "paymasterAndData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "signature",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct UserOperation[]",
+						"name": "userOps",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "validateSignatures",
+				"outputs": [],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "sender",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nonce",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "initCode",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "callData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint256",
+								"name": "callGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "verificationGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "preVerificationGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxPriorityFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "paymasterAndData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "signature",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct UserOperation",
+						"name": "userOp",
+						"type": "tuple"
+					}
+				],
+				"name": "validateUserOpSignature",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "sigForUserOp",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"aggregateSignatures((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[])": {
+					"params": {
+						"userOps": "array of UserOperations to collect the signatures from."
+					},
+					"returns": {
+						"aggregatedSignature": "the aggregated signature"
+					}
+				},
+				"validateUserOpSignature((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes))": {
+					"params": {
+						"userOp": "the userOperation received from the user."
+					},
+					"returns": {
+						"sigForUserOp": "the value to put into the signature field of the userOp when calling handleOps.    (usually empty, unless account and aggregator support some kind of \"multisig\""
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"aggregateSignatures((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[])": {
+					"notice": "aggregate multiple signatures into a single value. This method is called off-chain to calculate the signature to pass with handleOps() bundler MAY use optimized custom code perform this aggregation"
+				},
+				"validateSignatures((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],bytes)": {
+					"notice": "validate aggregated signature. revert if the aggregated signature does not match the given list of operations."
+				},
+				"validateUserOpSignature((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes))": {
+					"notice": "validate signature of a single userOp This method is should be called by bundler after EntryPoint.simulateValidation() returns (reverts) with ValidationResultWithAggregation First it validates the signature over the userOp. Then it returns data to be used when creating the handleOps."
+				}
+			},
+			"notice": "Aggregated Signatures validator.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAggregator.sol": "IAggregator"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/UserOperation.sol": {
+			"keccak256": "0x0844576ffce3c3fd6ec5454d3a142efe5ed119112d7e1c6698c99b5b93a6476f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5e788a3d11d336be698790552bd9f31f1bdc72f43a22a5b2574fb248c819076f",
+				"dweb:/ipfs/QmcfToLtD2tA36AL6FKB8Du7EWr43zC5yo2HZFGKeY41Z4"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAggregator.sol": {
+			"keccak256": "0x516d1dcafa4a239386340533d87ed0c1eff291c631cf596afaf82262ddfa603d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://ed5974a9e0fe8de3de6779ca0ef4c1655a26ca9a73a94b4d8a26789ac1bd09ef",
+				"dweb:/ipfs/QmXxjfVDdZS6bqyHo5AfbZthZUtytcCt8Gn87jg8bdM4wv"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/Helpers.sol": {
+			"keccak256": "0x78aa2145fcfb195f533e68486fd1617a3b6b5bdf53af1b8fd2ab7211459bc8ba",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a1ea19d4707c245e5bdad9df43cd89bbc451b08e074b0cb2156a04c0e1e2c6da",
+				"dweb:/ipfs/QmVas9dTRJt9HJQomia5ZTBgQanxyz1akyDAkCHRL3ecx7"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,96 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes[]",
+						"name": "data",
+						"type": "bytes[]"
+					}
+				],
+				"name": "multicall",
+				"outputs": [
+					{
+						"internalType": "bytes[]",
+						"name": "results",
+						"type": "bytes[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Provides a function to batch together multiple calls in a single external call. _Available since v4.1._",
+			"kind": "dev",
+			"methods": {
+				"multicall(bytes[])": {
+					"details": "Receives and executes a batch of function calls on this contract.",
+					"params": {
+						"data": "The bytes data that makes up the batch of function calls to execute."
+					},
+					"returns": {
+						"results": "The bytes data that makes up the result of the batch of function calls executed."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"multicall(bytes[])": {
+					"notice": "Receives and executes a batch of function calls on this contract."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Multicall.sol": "Multicall"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Multicall.sol": {
+			"keccak256": "0x82921a9d2813a43b54ef82352e252f112ce7542accb95f5cfd2db18ef392646b",
+			"license": "Apache 2.0",
+			"urls": [
+				"bzz-raw://9ad280ac58a70a423deb3a938da2dbbeabc6e3f861abf61073f7c0a218903a57",
+				"dweb:/ipfs/QmXy7k5P7z4s6YpJfeAKWWpE1fJdny8hJStHTYVv23RWzg"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IMulticall.sol": {
+			"keccak256": "0xa569531ddd48bf1bd6fcb12927a732ea49a5277429fbba7e44108f4f8d336234",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bd423a5b7315e40dd6cf31ce3c34d236d349c8959d0fed44a1dc84eb431429c",
+				"dweb:/ipfs/QmYR9XkzCvPzT48HieLHkujzF1cAAZT3E8pazRCgCU8NaJ"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Address.sol": {
+			"keccak256": "0x3793ed8492fa575cf73beed883a26cda685bb53f63950599c1280eae9a73fada",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://f9e2916d53829baff87699664e65b95ff536c25d02d4b9ff2433eab54812f9b0",
+				"dweb:/ipfs/QmXSqLvmNZ3qLLC42TCDzNEia2mUmALdTTfLxKmfdqNEot"
+			]
+		}
+	},
+	"version": 1
+}

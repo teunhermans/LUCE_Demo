@@ -1,0 +1,1117 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract IEntryPoint",
+						"name": "_entrypoint",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_factory",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "signer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "isAdmin",
+						"type": "bool"
+					}
+				],
+				"name": "AdminUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "version",
+						"type": "uint8"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "authorizingSigner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "targetSigner",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "signer",
+								"type": "address"
+							},
+							{
+								"internalType": "uint8",
+								"name": "isAdmin",
+								"type": "uint8"
+							},
+							{
+								"internalType": "address[]",
+								"name": "approvedTargets",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nativeTokenLimitPerTransaction",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint128",
+								"name": "permissionStartTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "permissionEndTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "reqValidityStartTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "reqValidityEndTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "uid",
+								"type": "bytes32"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct IAccountPermissions.SignerPermissionRequest",
+						"name": "permissions",
+						"type": "tuple"
+					}
+				],
+				"name": "SignerPermissionsUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "entryPoint",
+				"outputs": [
+					{
+						"internalType": "contract IEntryPoint",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "factory",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllActiveSigners",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "signer",
+								"type": "address"
+							},
+							{
+								"internalType": "address[]",
+								"name": "approvedTargets",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nativeTokenLimitPerTransaction",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint128",
+								"name": "startTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "endTimestamp",
+								"type": "uint128"
+							}
+						],
+						"internalType": "struct IAccountPermissions.SignerPermissions[]",
+						"name": "signers",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllAdmins",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllSigners",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "signer",
+								"type": "address"
+							},
+							{
+								"internalType": "address[]",
+								"name": "approvedTargets",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nativeTokenLimitPerTransaction",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint128",
+								"name": "startTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "endTimestamp",
+								"type": "uint128"
+							}
+						],
+						"internalType": "struct IAccountPermissions.SignerPermissions[]",
+						"name": "signers",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNonce",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "signer",
+						"type": "address"
+					}
+				],
+				"name": "getPermissionsForSigner",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "signer",
+								"type": "address"
+							},
+							{
+								"internalType": "address[]",
+								"name": "approvedTargets",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nativeTokenLimitPerTransaction",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint128",
+								"name": "startTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "endTimestamp",
+								"type": "uint128"
+							}
+						],
+						"internalType": "struct IAccountPermissions.SignerPermissions",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_defaultAdmin",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "signer",
+						"type": "address"
+					}
+				],
+				"name": "isActiveSigner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_account",
+						"type": "address"
+					}
+				],
+				"name": "isAdmin",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_signer",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "sender",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nonce",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "initCode",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "callData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint256",
+								"name": "callGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "verificationGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "preVerificationGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxPriorityFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "paymasterAndData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "signature",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct UserOperation",
+						"name": "_userOp",
+						"type": "tuple"
+					}
+				],
+				"name": "isValidSigner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes[]",
+						"name": "data",
+						"type": "bytes[]"
+					}
+				],
+				"name": "multicall",
+				"outputs": [
+					{
+						"internalType": "bytes[]",
+						"name": "results",
+						"type": "bytes[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IEntryPoint",
+						"name": "_entrypointOverride",
+						"type": "address"
+					}
+				],
+				"name": "setEntrypointOverride",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "signer",
+								"type": "address"
+							},
+							{
+								"internalType": "uint8",
+								"name": "isAdmin",
+								"type": "uint8"
+							},
+							{
+								"internalType": "address[]",
+								"name": "approvedTargets",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nativeTokenLimitPerTransaction",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint128",
+								"name": "permissionStartTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "permissionEndTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "reqValidityStartTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "reqValidityEndTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "uid",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct IAccountPermissions.SignerPermissionRequest",
+						"name": "_req",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_signature",
+						"type": "bytes"
+					}
+				],
+				"name": "setPermissionsForSigner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "sender",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nonce",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "initCode",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "callData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint256",
+								"name": "callGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "verificationGasLimit",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "preVerificationGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxPriorityFeePerGas",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "paymasterAndData",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "signature",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct UserOperation",
+						"name": "userOp",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "userOpHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "missingAccountFunds",
+						"type": "uint256"
+					}
+				],
+				"name": "validateUserOp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "validationData",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "signer",
+								"type": "address"
+							},
+							{
+								"internalType": "uint8",
+								"name": "isAdmin",
+								"type": "uint8"
+							},
+							{
+								"internalType": "address[]",
+								"name": "approvedTargets",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nativeTokenLimitPerTransaction",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint128",
+								"name": "permissionStartTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "permissionEndTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "reqValidityStartTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "reqValidityEndTimestamp",
+								"type": "uint128"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "uid",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct IAccountPermissions.SignerPermissionRequest",
+						"name": "req",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "verifySignerPermissionRequest",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "signer",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"Initialized(uint8)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"isValidSigner(address,(address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes))": {
+					"params": {
+						"_signer": "The signer to check.",
+						"_userOp": "The user operation to check."
+					},
+					"returns": {
+						"_0": "Whether the signer is authorized to perform the transaction."
+					}
+				},
+				"multicall(bytes[])": {
+					"details": "Receives and executes a batch of function calls on this contract.",
+					"params": {
+						"data": "The bytes data that makes up the batch of function calls to execute."
+					},
+					"returns": {
+						"results": "The bytes data that makes up the result of the batch of function calls executed."
+					}
+				},
+				"verifySignerPermissionRequest((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)": {
+					"details": "Verifies that a request is signed by an authorized account."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"AdminUpdated(address,bool)": {
+					"notice": "Emitted when an admin is set or removed."
+				},
+				"SignerPermissionsUpdated(address,address,(address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32))": {
+					"notice": "Emitted when permissions for a signer are updated."
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"entryPoint()": {
+					"notice": "Returns the EIP 4337 entrypoint contract."
+				},
+				"factory()": {
+					"notice": "EIP 4337 factory for this contract."
+				},
+				"getAllActiveSigners()": {
+					"notice": "Returns all signers with active permissions to use the account."
+				},
+				"getAllAdmins()": {
+					"notice": "Returns all admins of the account."
+				},
+				"getAllSigners()": {
+					"notice": "Returns all active and inactive signers of the account."
+				},
+				"getNonce()": {
+					"notice": "Return the account nonce. This method returns the next sequential nonce. For a nonce of a specific key, use `entrypoint.getNonce(account, key)`"
+				},
+				"getPermissionsForSigner(address)": {
+					"notice": "Returns the restrictions under which a signer can use the smart wallet."
+				},
+				"initialize(address,bytes)": {
+					"notice": "Initializes the smart contract wallet."
+				},
+				"isActiveSigner(address)": {
+					"notice": "Returns whether the given account is an active signer on the account."
+				},
+				"isAdmin(address)": {
+					"notice": "Returns whether the given account is an admin."
+				},
+				"isValidSigner(address,(address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes))": {
+					"notice": "Returns whether a signer is authorized to perform transactions using the account. Validity of the signature is based upon signer permission start/end timestamps, txn target, and txn value. Account admins will always return true, and signers with address(0) as the only approved target will skip target checks."
+				},
+				"multicall(bytes[])": {
+					"notice": "Receives and executes a batch of function calls on this contract."
+				},
+				"setEntrypointOverride(address)": {
+					"notice": "Overrides the Entrypoint contract being used."
+				},
+				"setPermissionsForSigner((address,uint8,address[],uint256,uint128,uint128,uint128,uint128,bytes32),bytes)": {
+					"notice": "Sets the permissions for a given signer."
+				},
+				"validateUserOp((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes),bytes32,uint256)": {
+					"notice": "Validate user's signature and nonce. subclass doesn't need to override this method. Instead, it should override the specific internal validation methods."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/AccountStore.sol": "AccountCore"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/AccountPermissions.sol": {
+			"keccak256": "0x7dc96d85d88569c2acb5e471dc04f0cb6b97ddd57ec01a1a2d786e34bf0378b7",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://3d41ea9fa3017a451a646a320e5f12051e85e33c77c6a01cf701cb1ae5c98037",
+				"dweb:/ipfs/QmRXbSgZGHSXo1UaUZC4NXMvrobZGzTc665Z1f8KHtQW6B"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/ContractMetadata.sol": {
+			"keccak256": "0xf39f4a9b5205086cce817c972e99cbbe8650b8fb9cc95b62845ea4cde3fa2844",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://274b22cead06dc42a56c1dcf450a70036c9fe59c3326d415c852a5cc3a4cbc8e",
+				"dweb:/ipfs/QmSdA68Qmby5rAdr3JQzCw4EnfzvRLYfDQrgFH6rCTd1Wq"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Initializable.sol": {
+			"keccak256": "0x745d7351e20def4842a749197e65bea93a7d9d7b9556d2c516e52a698b53170d",
+			"license": "Apache 2.0",
+			"urls": [
+				"bzz-raw://df7e96985f30495f70b5d98c934bb52a2a7123bc8e24003ef110d26eca56dfe2",
+				"dweb:/ipfs/QmUpXp5e1w3BgYTpGY9W6akoDyfrxB7TeDsbPpRmXse4KQ"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Multicall.sol": {
+			"keccak256": "0x82921a9d2813a43b54ef82352e252f112ce7542accb95f5cfd2db18ef392646b",
+			"license": "Apache 2.0",
+			"urls": [
+				"bzz-raw://9ad280ac58a70a423deb3a938da2dbbeabc6e3f861abf61073f7c0a218903a57",
+				"dweb:/ipfs/QmXy7k5P7z4s6YpJfeAKWWpE1fJdny8hJStHTYVv23RWzg"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/UserOperation.sol": {
+			"keccak256": "0x0844576ffce3c3fd6ec5454d3a142efe5ed119112d7e1c6698c99b5b93a6476f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5e788a3d11d336be698790552bd9f31f1bdc72f43a22a5b2574fb248c819076f",
+				"dweb:/ipfs/QmcfToLtD2tA36AL6FKB8Du7EWr43zC5yo2HZFGKeY41Z4"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/EIP712.sol": {
+			"keccak256": "0x25654c1fd5d6eea9cd129468120eca50d3bdb95688018d8ac449e3a97380f035",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3b29af88804a5c5ded9a4d91f5a83874fde773aac2e2b55b265296db4c8f15c8",
+				"dweb:/ipfs/Qmcw3SXJhmztyeShYZYxGHzvVVBYx94rB86gtywBStVYVk"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/ERC1155Holder.sol": {
+			"keccak256": "0x4525b38acf0419f706f992302c764218e5e276b26c7e8ac941c888ab06d7c252",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5731ffc764b904ba3251b01cae42bf5b68214155e4e4a7e1496502cdb9c2119f",
+				"dweb:/ipfs/QmQNJJv7JRXjmEoZ2Su13hgqKgAbj1NCu1rUMxRYiG1VNy"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/ERC1155Receiver.sol": {
+			"keccak256": "0xdf46e837f9647620d40dead57860d0e471af6cb166e3fa2d336983ec437230b3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a8976271272e0471df84b67b2dcf62b5642f61809876f62dbf40cbfd39f0accb",
+				"dweb:/ipfs/QmUiw6aBUA7HpuETgd4WKhMm8QR63acRmE2qac2mYUJLjs"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/ERC1271.sol": {
+			"keccak256": "0x7ed4875c46aa03fe1d51a02f03d3af111dc620576e6c35a638d73bf16225a957",
+			"license": "Apache 2.0",
+			"urls": [
+				"bzz-raw://7bd3fb45b9e1f398c4067936dfe0f8076760896e499edde600aa5d904028e832",
+				"dweb:/ipfs/QmY1YvQhNWK5BhHMLKbSTGoM19QtK76ofU9vrGCGQVa2Ka"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/ERC165.sol": {
+			"keccak256": "0xa96986bc175f1dc29e7e41b0d0f583e2ce0653fe7e97c1eb77a7295f5198c17e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7bb0624408e8b206aac47baeff6f0b8206086563ece7a43cb7ecda15306c01a4",
+				"dweb:/ipfs/QmaES9pxgPLSMor7YMMC5rPqJf43aydDiMBxPRrXyjEB1L"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/ERC721Holder.sol": {
+			"keccak256": "0x23ca9c264a6db67e6e38b13485c540a7da41b18255023a541d7eb898d8abf839",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7662c82f0ba877be24925128974308d7dc65ca4e31d3c42adcd16a8f5fda821b",
+				"dweb:/ipfs/QmcxVjgXLZJuggWBa8biAxEHRhub5uoAwsqePXSBWyo6pc"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccount.sol": {
+			"keccak256": "0xdbf3f91dd92200e52294b0606a1344bc7f959426577e27f4fd1e757d04e7b045",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f8ea4061342a16e18c5ad652e19fa7d0343493e6302470e498c79f12cd5b4bf6",
+				"dweb:/ipfs/QmTvSGFxEZkSg656mx1ombm6a1CU33L8JxqTVtUKN5daML"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountCore.sol": {
+			"keccak256": "0xb4aeeb7e5ed69998cbc8d674cb44b989426b039af5f41f7a887f090e3bc7a876",
+			"license": "Apache 2.0",
+			"urls": [
+				"bzz-raw://5ae7c19b2d22d2e74719875c6d0762a341fbb9db36e81f894e15a228e1ad637c",
+				"dweb:/ipfs/QmZHL9jed5Tdn3SQSRjCDuRu6GBgmPruqu43ENj3N3vJhr"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountFactory.sol": {
+			"keccak256": "0x820f45842ad539f214db3fbca19fea58702b5ecdd496aa770951904a4938d7e4",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://091e913a25e6a3cde14596525e8d5a8656275fd5fcd8fcb56ec3fd7a66d050f9",
+				"dweb:/ipfs/Qmbp73fgRHMWyQ2ETsCpVanUXj6NxnzBiJxcEupZwCAKWx"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountFactoryCore.sol": {
+			"keccak256": "0x65c5ed98c2b7dd9ba4f2c83eaa652b1069470999a04625e33ea197e39aff63b6",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://9a3d0c5d28efdae547f3714e341b6caf71f27358d9409a6dcc72ca569aeb9ff6",
+				"dweb:/ipfs/QmUBZHg1bCsNGWrSC9d34oPDqriLregwxiRCUjmYYZeR5E"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAccountPermissions.sol": {
+			"keccak256": "0x34e998c2cfac71ae5837280e487215fc64f17c4212270192442e541527a38871",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://51d201d243ade4b6aa37f88e6dbd8f4886ef2b15a290630367b8b95f8ef1a69c",
+				"dweb:/ipfs/QmfHdzvzEugZMatjex3sbp2ehjcRE3mDi7QxEHCi6A25Ww"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IAggregator.sol": {
+			"keccak256": "0x516d1dcafa4a239386340533d87ed0c1eff291c631cf596afaf82262ddfa603d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://ed5974a9e0fe8de3de6779ca0ef4c1655a26ca9a73a94b4d8a26789ac1bd09ef",
+				"dweb:/ipfs/QmXxjfVDdZS6bqyHo5AfbZthZUtytcCt8Gn87jg8bdM4wv"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IContractMetadata.sol": {
+			"keccak256": "0x5952d0586b962b2023a9ab6375496c90067fcced4f7f6283ea6b3026f2f14983",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c53bc124b874d0db67ff2c96cdd8a2a375557446f3a2a026c88a334db2250c34",
+				"dweb:/ipfs/QmR7to5196g8Py4qa4GuFH4DeSLWHgyZzFa17biRosrrpM"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IERC1155Receiver.sol": {
+			"keccak256": "0x22a0c50cbc69aa19cb1d9ee08f73b227e2c5d3a14b9dbb53de819a916ddd3e3e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ac979f9a2c42aedb3b66da2cb7d7d579224a2129c54f6515256835839158b7b9",
+				"dweb:/ipfs/QmUxV7xaoM1tjEXgUCSR46x43aN9XtaNSv4ijURpTbSiHv"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IERC165.sol": {
+			"keccak256": "0x602295d1c44a6f0bae7035cb559d78cd005d3f03468847c1b7ebc42d4021d74d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://79efcef9e064ce6be54e41319afd5f54cd2ab82010e6831499a8b4e189dac466",
+				"dweb:/ipfs/QmT3E66u7DhBBwF4o1eJQSi7KBrwbtUjGBiwXbZn8mCsU8"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IERC721Receiver.sol": {
+			"keccak256": "0xd7dcb4429a3ce3e3abfd2aff9a057ce4267492b2a88730fa41d62ac43df5573b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7ac0366003a4a99a3380ce9f5f8ebd20e8b75f4c42c14d732dffad1e623634f9",
+				"dweb:/ipfs/QmXYRqc21kGRi5yhMpjwifFKdPYXR4S6xKfcyYWeEHuPPf"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IEntrypoint.sol": {
+			"keccak256": "0xef4668624f5de2d35eba19dd3edfddc3acd5a2b845cae211f299c1311e216f2c",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://8769f0c62103b659084e7cefdb26eeb9b46b31de03fd4002e264e9afa64868a8",
+				"dweb:/ipfs/QmZovAx1SQH6rmhciv1tGSJTAxRq1YBUjUo63mqsrw3did"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IMulticall.sol": {
+			"keccak256": "0xa569531ddd48bf1bd6fcb12927a732ea49a5277429fbba7e44108f4f8d336234",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bd423a5b7315e40dd6cf31ce3c34d236d349c8959d0fed44a1dc84eb431429c",
+				"dweb:/ipfs/QmYR9XkzCvPzT48HieLHkujzF1cAAZT3E8pazRCgCU8NaJ"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/INonceManager.sol": {
+			"keccak256": "0x77085fe40d8352eb6d16f02cca3b8b57db016e97173b5341104d4c4fc677531f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://8c7eec5d8ebaef50e8e856364a6570cac01f609a3dfcd611af6d7fa550f05d54",
+				"dweb:/ipfs/QmToDwfQAymfgUWUTg4VMnfZW72fGcmxWbGk1pipw5Bkm1"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IStakeManager.sol": {
+			"keccak256": "0x56ed36384e0c62253769a2219b2e9161d88e5f58ae1f781fd3a540c8a399b9a7",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://9f26a6b28abc3eee5cf63938205ee6274d508b6f3acd5d1af0f041a2f239be45",
+				"dweb:/ipfs/QmY4DYvnqU93ta3VNSa6nxNjoWoum6B8t8k9D7wLUvk6m1"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Address.sol": {
+			"keccak256": "0x3793ed8492fa575cf73beed883a26cda685bb53f63950599c1280eae9a73fada",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://f9e2916d53829baff87699664e65b95ff536c25d02d4b9ff2433eab54812f9b0",
+				"dweb:/ipfs/QmXSqLvmNZ3qLLC42TCDzNEia2mUmALdTTfLxKmfdqNEot"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/BytesLib.sol": {
+			"keccak256": "0x2516d3f849615cb70f26692e1f1c4c25d056eb74fa68b18aa46c46edb7fa5ec7",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://5a38ea655a3553fa7a32610ee11de2e3d5ae36367a667a0d1c229ffa6c073c5e",
+				"dweb:/ipfs/QmU9GUNZkvWnSbRoGWfbqDnZb6GAMnXHBerkrqN93bqeig"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Clones.sol": {
+			"keccak256": "0x2362d7dd406da7ffbd665a99fd4a9c033d5d0e0113429f28848a54ff603d1878",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://963cfd950920cc1703d1190b0f0bcd6d5bbce666773e13f1d5955cc356bd9ba8",
+				"dweb:/ipfs/QmT6pkaQqEYcvDwHvJakuwNTtBRnaJJFhGW85Mn6238EUh"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/EnumerableSet.sol": {
+			"keccak256": "0x3fcc70973c4fd46e32562aa3cb2b5bb465200dc76dd6ac32a6ac83ca36605294",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e25c92065f2afba193544cfef02fd8803f192447ed45ddc6e7bed5f892bd21b3",
+				"dweb:/ipfs/QmP5Xbh7YBDieZ4rKoX3RCGbG8cmA2NbxYqSio4PfvuW4T"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Strings.sol": {
+			"keccak256": "0x20e6bbbb0ac64ba9358b7d03773ba533d9474afb93285e412c80ba951fc16e52",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c6706f7cd9a2c723cb7df32e4dfbfc08f96812dfda2d96d0d922385da6fed190",
+				"dweb:/ipfs/QmVEfuuyWFTQQsZ4Xk4hmVwojKPjVk8pgX5hUmvUi4prQg"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/AccountCore.sol": {
+			"keccak256": "0xfb2f6b11edecb19de6beb9bb486dabba9a8f08df4634d3d93e2b8c550055ae3e",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://727782252816db07d4a4b17c72ccc9d7e69f145e48990294922bff115bbff018",
+				"dweb:/ipfs/QmVKSS625yR2qnRZA3TXgdR3CzjqZSR9FrbzGiYvexQ9ZH"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/AccountCoreStorage.sol": {
+			"keccak256": "0x07e95e472659b39c2925e4df6af15d4d048b4a2c0d0b85d8d40bf38ab6bdc85b",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://0cbc9090daef1a527c3d620e7369fc3d5a8354e9d307ed09607e5f9675bde0d7",
+				"dweb:/ipfs/QmdknnxZmNPiPRmZkBELoyxafx92KhLVgjeBAMAYiJVp3h"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/AccountExtension.sol": {
+			"keccak256": "0xffb2697ba17716c303cae73d18c863c156c069ec240a5d2ad544b56820992333",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://20a249ad1a5da912327a22404eb1628659c78e1ccd409f2073b164e88474bfcb",
+				"dweb:/ipfs/QmWHGkAizig4Jv7dTzw4Y8hrPDWJMLGzR5jFH561cFfR96"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/AccountStore.sol": {
+			"keccak256": "0xa97706526b4c2101b83e81e78ebeab1e03618ea9462ea3149438d171769670e3",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://3a100423ec3e70fa57104f99371e9bbf8e676cafa6ffd916f40b5e8352770488",
+				"dweb:/ipfs/QmYcDDCwu82aY9PcHfEzHMmHz3z4TLyAA4RtnBDdzGCE1Z"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/BaseAccount.sol": {
+			"keccak256": "0xd9d9a4c7f3189c8b8fa153188096c142f5e3761aacbf983ce3d65640fb3572ed",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://b59ca955c5764341e61c27fb41aa048fe135477e9a16cf22e6c0ed199dc0a3cf",
+				"dweb:/ipfs/Qmd7f4ei7wo5CkjnVXff2H7mVUnmHTv2zuCrJUDNBfkDTk"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/BaseAccountFactory.sol": {
+			"keccak256": "0x5b64d43318db2c3f3497777044d12acf761bc60256b10ca1b742a6735a3bbe40",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://e8b780ec4a55c0031fe6cc9597db2e42362fadd3ff39b75761fac38d586446a5",
+				"dweb:/ipfs/QmeGyjZTVnTXtQmdABnUiAZmGCKuie8T8uhyG12fjEsSTX"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/ECDSA.sol": {
+			"keccak256": "0xd3ff430c58be2936bf9cd4619ae0db100832fb08a75d20f18bc5abce89140421",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://de4755385866c68e43000ee6d068b6214137d4aa42fe4534a408d72e37520da1",
+				"dweb:/ipfs/QmZHJKhUX6m7fNEqUvLUSXtKEaH1CdvN7QZaeKtsi7kiuB"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/Helpers.sol": {
+			"keccak256": "0x78aa2145fcfb195f533e68486fd1617a3b6b5bdf53af1b8fd2ab7211459bc8ba",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a1ea19d4707c245e5bdad9df43cd89bbc451b08e074b0cb2156a04c0e1e2c6da",
+				"dweb:/ipfs/QmVas9dTRJt9HJQomia5ZTBgQanxyz1akyDAkCHRL3ecx7"
+			]
+		}
+	},
+	"version": 1
+}

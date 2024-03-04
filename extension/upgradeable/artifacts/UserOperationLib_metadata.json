@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Utility functions helpful when working with UserOperation structs.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/UserOperation.sol": "UserOperationLib"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/UserOperation.sol": {
+			"keccak256": "0x0844576ffce3c3fd6ec5454d3a142efe5ed119112d7e1c6698c99b5b93a6476f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5e788a3d11d336be698790552bd9f31f1bdc72f43a22a5b2574fb248c819076f",
+				"dweb:/ipfs/QmcfToLtD2tA36AL6FKB8Du7EWr43zC5yo2HZFGKeY41Z4"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/utils/Helpers.sol": {
+			"keccak256": "0x78aa2145fcfb195f533e68486fd1617a3b6b5bdf53af1b8fd2ab7211459bc8ba",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a1ea19d4707c245e5bdad9df43cd89bbc451b08e074b0cb2156a04c0e1e2c6da",
+				"dweb:/ipfs/QmVas9dTRJt9HJQomia5ZTBgQanxyz1akyDAkCHRL3ecx7"
+			]
+		}
+	},
+	"version": 1
+}

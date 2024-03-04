@@ -1,0 +1,696 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"_disableFunctionInExtension(string,bytes4)": "429eed80",
+			"addExtension(((string,string,address),(bytes4,string)[]))": "e05688fe",
+			"disableFunctionInExtension(string,bytes4)": "512cf914",
+			"enableFunctionInExtension(string,(bytes4,string))": "8856a113",
+			"getAllExtensions()": "4a00cc48",
+			"getExtension(string)": "c22707ee",
+			"getMetadataForFunction(bytes4)": "a0dbaefd",
+			"removeExtension(string)": "ee7d2adf",
+			"replaceExtension(((string,string,address),(bytes4,string)[]))": "c0562f6d"
+		}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "implementation",
+					"type": "address"
+				},
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "metadataURI",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "implementation",
+									"type": "address"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionMetadata",
+							"name": "metadata",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "bytes4",
+									"name": "functionSelector",
+									"type": "bytes4"
+								},
+								{
+									"internalType": "string",
+									"name": "functionSignature",
+									"type": "string"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionFunction[]",
+							"name": "functions",
+							"type": "tuple[]"
+						}
+					],
+					"indexed": false,
+					"internalType": "struct IExtension.Extension",
+					"name": "extension",
+					"type": "tuple"
+				}
+			],
+			"name": "ExtensionAdded",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "metadataURI",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "implementation",
+									"type": "address"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionMetadata",
+							"name": "metadata",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "bytes4",
+									"name": "functionSelector",
+									"type": "bytes4"
+								},
+								{
+									"internalType": "string",
+									"name": "functionSignature",
+									"type": "string"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionFunction[]",
+							"name": "functions",
+							"type": "tuple[]"
+						}
+					],
+					"indexed": false,
+					"internalType": "struct IExtension.Extension",
+					"name": "extension",
+					"type": "tuple"
+				}
+			],
+			"name": "ExtensionRemoved",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "implementation",
+					"type": "address"
+				},
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "metadataURI",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "implementation",
+									"type": "address"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionMetadata",
+							"name": "metadata",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "bytes4",
+									"name": "functionSelector",
+									"type": "bytes4"
+								},
+								{
+									"internalType": "string",
+									"name": "functionSignature",
+									"type": "string"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionFunction[]",
+							"name": "functions",
+							"type": "tuple[]"
+						}
+					],
+					"indexed": false,
+					"internalType": "struct IExtension.Extension",
+					"name": "extension",
+					"type": "tuple"
+				}
+			],
+			"name": "ExtensionReplaced",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"internalType": "bytes4",
+					"name": "functionSelector",
+					"type": "bytes4"
+				},
+				{
+					"components": [
+						{
+							"internalType": "string",
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "metadataURI",
+							"type": "string"
+						},
+						{
+							"internalType": "address",
+							"name": "implementation",
+							"type": "address"
+						}
+					],
+					"indexed": false,
+					"internalType": "struct IExtension.ExtensionMetadata",
+					"name": "extMetadata",
+					"type": "tuple"
+				}
+			],
+			"name": "FunctionDisabled",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"internalType": "bytes4",
+					"name": "functionSelector",
+					"type": "bytes4"
+				},
+				{
+					"components": [
+						{
+							"internalType": "bytes4",
+							"name": "functionSelector",
+							"type": "bytes4"
+						},
+						{
+							"internalType": "string",
+							"name": "functionSignature",
+							"type": "string"
+						}
+					],
+					"indexed": false,
+					"internalType": "struct IExtension.ExtensionFunction",
+					"name": "extFunction",
+					"type": "tuple"
+				},
+				{
+					"components": [
+						{
+							"internalType": "string",
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "metadataURI",
+							"type": "string"
+						},
+						{
+							"internalType": "address",
+							"name": "implementation",
+							"type": "address"
+						}
+					],
+					"indexed": false,
+					"internalType": "struct IExtension.ExtensionMetadata",
+					"name": "extMetadata",
+					"type": "tuple"
+				}
+			],
+			"name": "FunctionEnabled",
+			"type": "event"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_extensionName",
+					"type": "string"
+				},
+				{
+					"internalType": "bytes4",
+					"name": "_functionSelector",
+					"type": "bytes4"
+				}
+			],
+			"name": "_disableFunctionInExtension",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "metadataURI",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "implementation",
+									"type": "address"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionMetadata",
+							"name": "metadata",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "bytes4",
+									"name": "functionSelector",
+									"type": "bytes4"
+								},
+								{
+									"internalType": "string",
+									"name": "functionSignature",
+									"type": "string"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionFunction[]",
+							"name": "functions",
+							"type": "tuple[]"
+						}
+					],
+					"internalType": "struct IExtension.Extension",
+					"name": "_extension",
+					"type": "tuple"
+				}
+			],
+			"name": "addExtension",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_extensionName",
+					"type": "string"
+				},
+				{
+					"internalType": "bytes4",
+					"name": "_functionSelector",
+					"type": "bytes4"
+				}
+			],
+			"name": "disableFunctionInExtension",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_extensionName",
+					"type": "string"
+				},
+				{
+					"components": [
+						{
+							"internalType": "bytes4",
+							"name": "functionSelector",
+							"type": "bytes4"
+						},
+						{
+							"internalType": "string",
+							"name": "functionSignature",
+							"type": "string"
+						}
+					],
+					"internalType": "struct IExtension.ExtensionFunction",
+					"name": "_function",
+					"type": "tuple"
+				}
+			],
+			"name": "enableFunctionInExtension",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getAllExtensions",
+			"outputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "metadataURI",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "implementation",
+									"type": "address"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionMetadata",
+							"name": "metadata",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "bytes4",
+									"name": "functionSelector",
+									"type": "bytes4"
+								},
+								{
+									"internalType": "string",
+									"name": "functionSignature",
+									"type": "string"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionFunction[]",
+							"name": "functions",
+							"type": "tuple[]"
+						}
+					],
+					"internalType": "struct IExtension.Extension[]",
+					"name": "allExtensions",
+					"type": "tuple[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "extensionName",
+					"type": "string"
+				}
+			],
+			"name": "getExtension",
+			"outputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "metadataURI",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "implementation",
+									"type": "address"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionMetadata",
+							"name": "metadata",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "bytes4",
+									"name": "functionSelector",
+									"type": "bytes4"
+								},
+								{
+									"internalType": "string",
+									"name": "functionSignature",
+									"type": "string"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionFunction[]",
+							"name": "functions",
+							"type": "tuple[]"
+						}
+					],
+					"internalType": "struct IExtension.Extension",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes4",
+					"name": "functionSelector",
+					"type": "bytes4"
+				}
+			],
+			"name": "getMetadataForFunction",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "string",
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "metadataURI",
+							"type": "string"
+						},
+						{
+							"internalType": "address",
+							"name": "implementation",
+							"type": "address"
+						}
+					],
+					"internalType": "struct IExtension.ExtensionMetadata",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_extensionName",
+					"type": "string"
+				}
+			],
+			"name": "removeExtension",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "metadataURI",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "implementation",
+									"type": "address"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionMetadata",
+							"name": "metadata",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "bytes4",
+									"name": "functionSelector",
+									"type": "bytes4"
+								},
+								{
+									"internalType": "string",
+									"name": "functionSignature",
+									"type": "string"
+								}
+							],
+							"internalType": "struct IExtension.ExtensionFunction[]",
+							"name": "functions",
+							"type": "tuple[]"
+						}
+					],
+					"internalType": "struct IExtension.Extension",
+					"name": "_extension",
+					"type": "tuple"
+				}
+			],
+			"name": "replaceExtension",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

@@ -1,0 +1,427 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "previousAdminRole",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "newAdminRole",
+						"type": "bytes32"
+					}
+				],
+				"name": "RoleAdminChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "RoleGranted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "RoleRevoked",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DEFAULT_ADMIN_ROLE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					}
+				],
+				"name": "getRoleAdmin",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "getRoleMember",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "member",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					}
+				],
+				"name": "getRoleMemberCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "count",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "grantRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "hasRole",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "hasRoleWithSwitch",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "renounceRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "revokeRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"RoleAdminChanged(bytes32,bytes32,bytes32)": {
+					"details": "Emitted when `newAdminRole` is set as ``role``'s admin role, replacing `previousAdminRole` `DEFAULT_ADMIN_ROLE` is the starting admin for all roles, despite {RoleAdminChanged} not being emitted signaling this. _Available since v3.1._"
+				},
+				"RoleGranted(bytes32,address,address)": {
+					"details": "Emitted when `account` is granted `role`. `sender` is the account that originated the contract call, an admin role bearer except when using {AccessControl-_setupRole}."
+				},
+				"RoleRevoked(bytes32,address,address)": {
+					"details": "Emitted when `account` is revoked `role`. `sender` is the account that originated the contract call:   - if using `revokeRole`, it is the admin role bearer   - if using `renounceRole`, it is the role bearer (i.e. `account`)"
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"getRoleAdmin(bytes32)": {
+					"details": "See {grantRole} and {revokeRole}.                  To change a role's admin, use {_setRoleAdmin}.",
+					"params": {
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					}
+				},
+				"getRoleMember(bytes32,uint256)": {
+					"details": "Returns `member` who has `role`, at `index` of role-members list.                  See struct {RoleMembers}, and mapping {roleMembers}",
+					"params": {
+						"index": "Index in list of current members for the role.",
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					},
+					"returns": {
+						"member": " Address of account that has `role`"
+					}
+				},
+				"getRoleMemberCount(bytes32)": {
+					"details": "Returns `count` of accounts that have `role`.                  See struct {RoleMembers}, and mapping {roleMembers}",
+					"params": {
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					},
+					"returns": {
+						"count": "  Total number of accounts that have `role`"
+					}
+				},
+				"grantRole(bytes32,address)": {
+					"details": "Caller must have admin role for the `role`.                  Emits {RoleGranted Event}.",
+					"params": {
+						"account": "Address of the account to which the role is being granted.",
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					}
+				},
+				"hasRole(bytes32,address)": {
+					"details": "Returns `true` if `account` has been granted `role`.",
+					"params": {
+						"account": "Address of the account for which the role is being checked.",
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					}
+				},
+				"hasRoleWithSwitch(bytes32,address)": {
+					"details": "Returns `true` if `account` has been granted `role`.                  Role restrictions can be swtiched on and off:                      - If address(0) has ROLE, then the ROLE restrictions                        don't apply.                      - If address(0) does not have ROLE, then the ROLE                        restrictions will apply.",
+					"params": {
+						"account": "Address of the account for which the role is being checked.",
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					}
+				},
+				"renounceRole(bytes32,address)": {
+					"details": "Caller must have the `role`, with caller being the same as `account`.                  Emits {RoleRevoked Event}.",
+					"params": {
+						"account": "Address of the account from which the role is being revoked.",
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					}
+				},
+				"revokeRole(bytes32,address)": {
+					"details": "Caller must have admin role for the `role`.                  Emits {RoleRevoked Event}.",
+					"params": {
+						"account": "Address of the account from which the role is being revoked.",
+						"role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getRoleAdmin(bytes32)": {
+					"notice": "Returns the admin role that controls the specified role."
+				},
+				"getRoleMember(bytes32,uint256)": {
+					"notice": "Returns the role-member from a list of members for a role,                  at a given index."
+				},
+				"getRoleMemberCount(bytes32)": {
+					"notice": "Returns total number of accounts that have a role."
+				},
+				"grantRole(bytes32,address)": {
+					"notice": "Grants a role to an account, if not previously granted."
+				},
+				"hasRole(bytes32,address)": {
+					"notice": "Checks whether an account has a particular role."
+				},
+				"hasRoleWithSwitch(bytes32,address)": {
+					"notice": "Checks whether an account has a particular role;                  role restrictions can be swtiched on and off."
+				},
+				"renounceRole(bytes32,address)": {
+					"notice": "Revokes role from the account."
+				},
+				"revokeRole(bytes32,address)": {
+					"notice": "Revokes role from an account."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/PermissionsEnumberable.sol": "PermissionsEnumerable"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Permissions.sol": {
+			"keccak256": "0x1a0a753452ae6e4ebde43eba5966956e9d8ae16a3ad3caf70728aba9dd832167",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://6c7102d78689dd324f3c97745cdd1250bf0f2e151a56ebd23e14b3bd82f7c397",
+				"dweb:/ipfs/QmbkARgWbW7pfqkjVKRwBYJjkd9eE8DXzBaamZsQeZtHF8"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/PermissionsEnumberable.sol": {
+			"keccak256": "0x625ae0ac617c968d5485ad80342c0cea93747acfa4e27cf49d290441e7e2c41e",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://09f6c0d161ee17ddd11b27eb33e55668a5ffdb559213cf07a3487a38c1edb709",
+				"dweb:/ipfs/Qmd21bF4ugPojrXmP9sLZ1qa9zVoKmciQvs5PL9QwQzGHu"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IPermissions.sol": {
+			"keccak256": "0xc52f7860688170ac28460b874ed205306f46b8a52eeca4773ec79492b2fed2e1",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://3d594586779bed95879a0fc685a83ab0a20c7b5bde152ac102bd4225e2654280",
+				"dweb:/ipfs/QmdAooj3NDzkz6Za5CW3oBcHai5FVo8jRotLjoVP3RE8WP"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IPermissionsEnumberable.sol": {
+			"keccak256": "0xe77eb276a130a99bceb44a8a80c3e3a05bd7d11f7668c689ef4052a51da6dced",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://ad79602efe9226547bfacef0bc4b10191facc4b4f3403b89fcb7b35cee10fee3",
+				"dweb:/ipfs/QmaWcZsGBFH34Q4hWivVqZc5va9FQ3CJxedUUkuSesKznF"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Strings.sol": {
+			"keccak256": "0x20e6bbbb0ac64ba9358b7d03773ba533d9474afb93285e412c80ba951fc16e52",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c6706f7cd9a2c723cb7df32e4dfbfc08f96812dfda2d96d0d922385da6fed190",
+				"dweb:/ipfs/QmVEfuuyWFTQQsZ4Xk4hmVwojKPjVk8pgX5hUmvUi4prQg"
+			]
+		}
+	},
+	"version": 1
+}

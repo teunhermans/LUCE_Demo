@@ -1,0 +1,83 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "EXTENSION_MANAGER_STORAGE_POSITION",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "thirdweb (https://github.com/thirdweb-dev/dynamic-contracts)",
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"EXTENSION_MANAGER_STORAGE_POSITION": {
+					"custom:storage-location": "erc7201:extension.manager.storage"
+				}
+			},
+			"title": "IExtensionManagerStorage",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Defined storage for managing a router's extensions.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/ExtensionManagerStorage.sol": "ExtensionManagerStorage"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IExtension.sol": {
+			"keccak256": "0xf95a5d4bf3ebe61acf019a6b68193db158c9a3ec9a1f27182f68a8011256a36e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://93477a7cb0dab2b2e802773c10a8cb27dbc679eb3d114039900a8c7261edb1f5",
+				"dweb:/ipfs/Qma8NFJ9yjrgT4FBnZyGLXYGN4kVr4i5fKURSy3TzekXcR"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/ExtensionManagerStorage.sol": {
+			"keccak256": "0x5dde547f745a353fe4a651edfa1edb8a28ff4d40d3100b6f2491ee0ee6bcc3a3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dc1f6ab15319263384f0a65ede2bf0b0fb4a3e7d7db0857799238415af099738",
+				"dweb:/ipfs/Qmb9pKpEriGfhcEsHs6WDAQxp6drFJq4nM3onumpfkkbis"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/StringSet.sol": {
+			"keccak256": "0xd93a33584aa76c000ccf6b0a8d413dcfab20e39afa58a237523e201a3afac989",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c3bfc84aff84be196b64d5be69a2e7d00c2156fc2ab4277a9d10c185b2e6a560",
+				"dweb:/ipfs/QmWwmagWrSSZm4iF5BE1i9GFLre6rabaizjfBZmMT7bgPa"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,83 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "PERMISSIONS_STORAGE_POSITION",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "This contracts provides extending-contracts with role-based access control mechanisms",
+			"kind": "dev",
+			"methods": {},
+			"stateVariables": {
+				"PERMISSIONS_STORAGE_POSITION": {
+					"custom:storage-location": "erc7201:permissions.storage",
+					"details": "keccak256(abi.encode(uint256(keccak256(\"permissions.storage\")) - 1)) & ~bytes32(uint256(0xff))"
+				}
+			},
+			"title": "Permissions",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Permissions.sol": "PermissionsStorage"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/npm/@thirdweb-dev/dynamic-contracts/extension/upgradeable/Permissions.sol": {
+			"keccak256": "0x1a0a753452ae6e4ebde43eba5966956e9d8ae16a3ad3caf70728aba9dd832167",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://6c7102d78689dd324f3c97745cdd1250bf0f2e151a56ebd23e14b3bd82f7c397",
+				"dweb:/ipfs/QmbkARgWbW7pfqkjVKRwBYJjkd9eE8DXzBaamZsQeZtHF8"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/interface/IPermissions.sol": {
+			"keccak256": "0xc52f7860688170ac28460b874ed205306f46b8a52eeca4773ec79492b2fed2e1",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://3d594586779bed95879a0fc685a83ab0a20c7b5bde152ac102bd4225e2654280",
+				"dweb:/ipfs/QmdAooj3NDzkz6Za5CW3oBcHai5FVo8jRotLjoVP3RE8WP"
+			]
+		},
+		".deps/npm/@thirdweb-dev/dynamic-contracts/src/lib/Strings.sol": {
+			"keccak256": "0x20e6bbbb0ac64ba9358b7d03773ba533d9474afb93285e412c80ba951fc16e52",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c6706f7cd9a2c723cb7df32e4dfbfc08f96812dfda2d96d0d922385da6fed190",
+				"dweb:/ipfs/QmVEfuuyWFTQQsZ4Xk4hmVwojKPjVk8pgX5hUmvUi4prQg"
+			]
+		}
+	},
+	"version": 1
+}

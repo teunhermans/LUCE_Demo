@@ -1,0 +1,286 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"aggregateSignatures((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[])": "275e2d79",
+			"validateSignatures((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],bytes)": "e3563a4f",
+			"validateUserOpSignature((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes))": "64c530cd"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "address",
+							"name": "sender",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "nonce",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes",
+							"name": "initCode",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes",
+							"name": "callData",
+							"type": "bytes"
+						},
+						{
+							"internalType": "uint256",
+							"name": "callGasLimit",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "verificationGasLimit",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "preVerificationGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "maxFeePerGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "maxPriorityFeePerGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes",
+							"name": "paymasterAndData",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes",
+							"name": "signature",
+							"type": "bytes"
+						}
+					],
+					"internalType": "struct UserOperation[]",
+					"name": "userOps",
+					"type": "tuple[]"
+				}
+			],
+			"name": "aggregateSignatures",
+			"outputs": [
+				{
+					"internalType": "bytes",
+					"name": "aggregatedSignature",
+					"type": "bytes"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "address",
+							"name": "sender",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "nonce",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes",
+							"name": "initCode",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes",
+							"name": "callData",
+							"type": "bytes"
+						},
+						{
+							"internalType": "uint256",
+							"name": "callGasLimit",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "verificationGasLimit",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "preVerificationGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "maxFeePerGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "maxPriorityFeePerGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes",
+							"name": "paymasterAndData",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes",
+							"name": "signature",
+							"type": "bytes"
+						}
+					],
+					"internalType": "struct UserOperation[]",
+					"name": "userOps",
+					"type": "tuple[]"
+				},
+				{
+					"internalType": "bytes",
+					"name": "signature",
+					"type": "bytes"
+				}
+			],
+			"name": "validateSignatures",
+			"outputs": [],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "address",
+							"name": "sender",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "nonce",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes",
+							"name": "initCode",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes",
+							"name": "callData",
+							"type": "bytes"
+						},
+						{
+							"internalType": "uint256",
+							"name": "callGasLimit",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "verificationGasLimit",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "preVerificationGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "maxFeePerGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "maxPriorityFeePerGas",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bytes",
+							"name": "paymasterAndData",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes",
+							"name": "signature",
+							"type": "bytes"
+						}
+					],
+					"internalType": "struct UserOperation",
+					"name": "userOp",
+					"type": "tuple"
+				}
+			],
+			"name": "validateUserOpSignature",
+			"outputs": [
+				{
+					"internalType": "bytes",
+					"name": "sigForUserOp",
+					"type": "bytes"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	]
+}
